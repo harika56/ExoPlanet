@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,15 +19,15 @@ namespace ExoPlanet
         //Determing total number of Planets without star i.e., Orphan Planets
         Console.WriteLine($"Number of Orphan Planets (without star): {exoPlanets.FindAll( n => n.HostStarAgeGyr.ToString() == "" && n.HostStarRadiusSlrRad.ToString() == " " && n.HostStarMetallicity.ToString() == "" && n.HostStarMassSlrMass.ToString() == "" && n.HostStarTempK.ToString() == "" ).Count}");
         
-        //Determining planet orbiting Hottest Star
+        //Determining planet orbiting the Hottest Star
         var planetOrbitingHottestStar = exoPlanets.FirstOrDefault(v => v.HostStarTempK.ToString() == exoPlanets.Max(c => c.HostStarTempK.ToString()));
 
         if (planetOrbitingHottestStar != null)
                         {
                             Console.WriteLine($"Planet Orbiting HottestStar: { planetOrbitingHottestStar.PlanetIdentifier}");
                         }
+           
           var years = exoPlanets.GroupBy(u => u.DiscoveryYear.OrderBy(s => s.Key.ToString() == "" ? 0 : Convert.ToInt32(s.Key)).Select(g => g.ToList()).ToList();
-
             foreach (var year in years)
             {
                 var yea = year.FirstOrDefault()?.DiscoveryYear;
