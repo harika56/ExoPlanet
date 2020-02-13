@@ -8,14 +8,18 @@ namespace ExoPlanet
 {
    public class Program
     {
-        static void Main()
+        public static void Main()
         {
 
         var exoPlanetsJson = File.ReadAllText("exoplanets.json");
+        //Converting JSON string to .Net objects
         var exoPlanets = JsonConvert.DeserializeObject<List<ExoPlanetData>>(exoPlanetsJson);
+        //Determining Total Planets in Data
         Console.WriteLine($"Number of Planets: {exoPlanets.Count}");
+        //Determing total number of Planets without star i.e., Orphan Planets
         Console.WriteLine($"Number of Orphan Planets (without star): {exoPlanets.FindAll( n => n.HostStarAgeGyr.ToString() == "" && n.HostStarRadiusSlrRad.ToString() == " " && n.HostStarMetallicity.ToString() == "" && n.HostStarMassSlrMass.ToString() == "" && n.HostStarTempK.ToString() == "" ).Count}");
-
+        
+        //Determining planet orbiting Hottest Star
         var planetOrbitingHottestStar = exoPlanets.FirstOrDefault(v => v.HostStarTempK.ToString() == exoPlanets.Max(c => c.HostStarTempK.ToString()));
 
         if (planetOrbitingHottestStar != null)
