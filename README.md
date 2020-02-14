@@ -12,6 +12,7 @@ Prerequisites
 Visual Studio 2019 with .Net core 3.0
 
 Steps
+GitHub link: https:github.com/harika56/expoplanet
 CLone the GIT Repository
 Install NewtonSoft.json package.
 Added exoplanet.json reference to project.
